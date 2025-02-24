@@ -15,6 +15,10 @@ public class GreetingController {
     public String greet(@RequestParam(value = "name", defaultValue = "Subhashree") String name) {
         logger.info("Received request for greeting with name: {}", name);
 
+        if (name.trim().isEmpty()) {
+            logger.warn("Warning: Empty name parameter received!");
+        }
+
         String message = "Hello, " + name + "!";
         logger.debug("Generated greeting message: {}", message);
 
